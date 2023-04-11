@@ -1,4 +1,4 @@
-import { Loginlayout, LoginTitle, LoginButton } from './style/Login.styled';
+import { Loginlayout, LoginTitle, LoginButton } from '../style/Login.styled';
 
 const Login = () => {
   return (
