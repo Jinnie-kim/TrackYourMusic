@@ -29,11 +29,11 @@ export const PersonalLink = styled.a`
   transform: translateX(-50%);
   bottom: 14px;
   padding-bottom: 3px;
-  color: #65d46e;
-  border-bottom: 1px solid #65d46e;
+  color: #1dda59;
+  border-bottom: 1px solid #1dda59;
   &:hover,
   focus {
-    color: #32a869;
-    border-bottom: 1px solid #32a869;
+    color: #17ad46;
+    border-bottom: 1px solid #17ad46;
   }
 `;

@@ -20,11 +20,11 @@ export const LoginButton = styled.button`
   border-radius: 20px;
   font-size: 14px;
   color: #ffffff;
-  background-color: #65d46e;
+  background-color: #1dda59;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   &:hover,
   :focus {
-    background-color: #32a869;
+    background-color: #17ad46;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 `;
