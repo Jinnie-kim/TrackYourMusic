@@ -1,23 +1,29 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import useAuth from '../hooks/useAuth';
 import { Loadinglayout, LoadSpinner } from '../style/Loading.styled';
+import { tokenAction } from '../store/token-slice';
 
 const code = new URLSearchParams(window.location.search).get('code');
 
 const Loading = () => {
-  const result = useAuth(code!);
+  const accessToken = useAuth(code!);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  localStorage.setItem('accessToken', accessToken);
+  dispatch(tokenAction.getToken(accessToken));
 
   useEffect(() => {
-    if (!result) return;
+    if (!accessToken) return;
 
     const loadTime = setTimeout(() => {
       navigate('/home');
-    }, 2000);
+    }, 1500);
 
     return () => clearTimeout(loadTime);
-  }, [result]);
+  }, [accessToken]);
 
   return (
     <Loadinglayout>
