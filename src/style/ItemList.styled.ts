@@ -19,7 +19,7 @@ export const ItemList = styled.li`
   p {
     font-size: 14px;
   }
-  &:first-child {
+  &:first-of-type {
     img {
       width: 125px;
       height: auto;
