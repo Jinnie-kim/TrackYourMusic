@@ -13,6 +13,10 @@ interface tokenType {
   token: { accessToken: string };
 }
 
+interface termButtonType {
+  button: { term: string };
+}
+
 const Home = () => {
   const [topArtists, setTopArtists] = useState<TopArtists[]>([]);
   const [topTracks, setTopTracks] = useState<TopTracks[]>([]);
@@ -20,6 +24,7 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const accessToken = useSelector((state: tokenType) => state.token.accessToken);
+  const term = useSelector((state: termButtonType) => state.button.term);
 
   useEffect(() => {
     if (!accessToken && localStorage.getItem('accessToken') !== null) {
@@ -30,14 +35,25 @@ const Home = () => {
       getUserProfile(accessToken).then((userData) => {
         setUser(userData);
       });
-      getTopArtists(accessToken, 'short_term').then((artistData) => {
+      getTopArtists(accessToken, term).then((artistData) => {
         setTopArtists(artistData.items as TopArtists[]);
       });
-      getTopTracks(accessToken, 'short_term').then((trackData) => {
+      getTopTracks(accessToken, term).then((trackData) => {
         setTopTracks(trackData.items as TopTracks[]);
       });
     }
   }, [accessToken]);
+
+  useEffect(() => {
+    if (accessToken) {
+      getTopArtists(accessToken, term).then((artistData) => {
+        setTopArtists(artistData.items as TopArtists[]);
+      });
+      getTopTracks(accessToken, term).then((trackData) => {
+        setTopTracks(trackData.items as TopTracks[]);
+      });
+    }
+  }, [term]);
 
   return (
     <Homelayout>
