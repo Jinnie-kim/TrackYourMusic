@@ -12,7 +12,7 @@ export const Contentlayout = styled.section`
   height: 680px;
   padding-top: 20px;
   padding-left: 22px;
-  border-left: 1px solid #000000;
+  border-left: 1px dashed #000000;
   h1 {
     margin-bottom: 47px;
     font-size: 48px;
