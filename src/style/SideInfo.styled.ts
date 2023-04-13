@@ -7,6 +7,10 @@ export const SideInfolayout = styled.aside`
   position: relative;
   text-align: center;
   background-color: #f8f8fa;
+  img {
+    width: 200px;
+    height: auto;
+  }
 `;
 
 export const InfoLists = styled.dl`
