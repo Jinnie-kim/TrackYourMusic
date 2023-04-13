@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { tokenAction } from '../store/token-slice';
 import SideInfo from '../components/SideInfo';
@@ -6,32 +6,50 @@ import ItemButtons from '../components/ItemButton';
 import TermButtons from '../components/TermButton';
 import ItemLists from '../components/ItemList';
 import { Homelayout, Contentlayout, Buttonlayout } from '../style/Home.styled';
+import { getTopArtists, getTopTracks } from '../api/topItem';
+import { getUserProfile } from '../api/user';
 
 interface tokenType {
   token: { accessToken: string };
 }
 
 const Home = () => {
+  const [topArtists, setTopArtists] = useState<TopArtists[]>([]);
+  const [topTracks, setTopTracks] = useState<TopTracks[]>([]);
+  const [user, setUser] = useState<UserProfile>();
+
   const dispatch = useDispatch();
   const accessToken = useSelector((state: tokenType) => state.token.accessToken);
 
   useEffect(() => {
     if (!accessToken && localStorage.getItem('accessToken') !== null) {
       dispatch(tokenAction.getToken(localStorage.getItem('accessToken')));
+      return;
+    }
+    if (accessToken) {
+      getUserProfile(accessToken).then((userData) => {
+        setUser(userData);
+      });
+      getTopArtists(accessToken, 'short_term').then((artistData) => {
+        setTopArtists(artistData.items as TopArtists[]);
+      });
+      getTopTracks(accessToken, 'short_term').then((trackData) => {
+        setTopTracks(trackData.items as TopTracks[]);
+      });
     }
   }, [accessToken]);
 
   return (
     <Homelayout>
       <Contentlayout>
-        <h1>Hi, JINNIE</h1>
+        <h1>Hi, {user?.display_name}</h1>
         <Buttonlayout>
           <ItemButtons />
           <TermButtons />
         </Buttonlayout>
-        <ItemLists />
+        <ItemLists topArtists={topArtists} topTracks={topTracks} />
       </Contentlayout>
-      <SideInfo />
+      <SideInfo userInfo={user!} />
     </Homelayout>
   );
 };
