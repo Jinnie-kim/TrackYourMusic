@@ -1,28 +1,34 @@
 import { SideInfolayout, InfoLists, InfoList, PersonalLink } from '../style/SideInfo.styled';
 
-const SideInfo = () => {
+interface userInfoProp {
+  userInfo: UserProfile;
+}
+
+const SideInfo = ({ userInfo }: userInfoProp) => {
   return (
     <SideInfolayout>
-      <img src="https://picsum.photos/200" alt="random image" />
+      <img src={userInfo?.images[0].url} alt="user image" />
       <InfoLists>
         <InfoList>
           <dt>Member id</dt>
-          <dd>n2eiaztdvow9l85pm9tbxez5r</dd>
+          <dd>{userInfo?.id}</dd>
         </InfoList>
         <InfoList>
           <dt>Membership</dt>
-          <dd>premium</dd>
+          <dd>{userInfo?.product}</dd>
         </InfoList>
         <InfoList>
           <dt>Email</dt>
-          <dd>hjk7639@gmail.com</dd>
+          <dd>{userInfo?.email}</dd>
         </InfoList>
         <InfoList>
           <dt>Service Country</dt>
-          <dd>KR 🇰🇷</dd>
+          <dd>{userInfo?.country}</dd>
         </InfoList>
       </InfoLists>
-      <PersonalLink href="">go to Spotify web 🌐</PersonalLink>
+      <PersonalLink href={userInfo?.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+        go to Spotify web 🌐
+      </PersonalLink>
     </SideInfolayout>
   );
 };
