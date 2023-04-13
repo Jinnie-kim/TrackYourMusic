@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { buttonAction } from '../store/button-slice';
 import { TermButtonBox, TermButton } from '../style/Button.styled';
 
 const TermButtons = () => {
@@ -6,16 +8,21 @@ const TermButtons = () => {
   const [isMedium, setIsMedium] = useState(false);
   const [isLong, setIsLong] = useState(false);
 
+  const dispatch = useDispatch();
+
   const selectTermHandler = (e: React.MouseEvent) => {
-    if (e.currentTarget.id === 'short') {
+    if (e.currentTarget.id === 'short_term') {
+      dispatch(buttonAction.selectTerm(e.currentTarget.id));
       setIsShort(true);
       setIsMedium(false);
       setIsLong(false);
-    } else if (e.currentTarget.id === 'medium') {
+    } else if (e.currentTarget.id === 'medium_term') {
+      dispatch(buttonAction.selectTerm(e.currentTarget.id));
       setIsShort(false);
       setIsMedium(true);
       setIsLong(false);
-    } else if (e.currentTarget.id === 'long') {
+    } else if (e.currentTarget.id === 'long_term') {
+      dispatch(buttonAction.selectTerm(e.currentTarget.id));
       setIsShort(false);
       setIsMedium(false);
       setIsLong(true);
@@ -24,13 +31,13 @@ const TermButtons = () => {
 
   return (
     <TermButtonBox>
-      <TermButton id="short" clicked={isShort} onClick={selectTermHandler}>
+      <TermButton id="short_term" clicked={isShort} onClick={selectTermHandler}>
         Last Month
       </TermButton>
-      <TermButton id="medium" clicked={isMedium} onClick={selectTermHandler}>
+      <TermButton id="medium_term" clicked={isMedium} onClick={selectTermHandler}>
         Last 6 Month
       </TermButton>
-      <TermButton id="long" clicked={isLong} onClick={selectTermHandler}>
+      <TermButton id="long_term" clicked={isLong} onClick={selectTermHandler}>
         All Time
       </TermButton>
     </TermButtonBox>
