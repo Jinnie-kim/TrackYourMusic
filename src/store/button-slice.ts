@@ -3,9 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 interface ButtonState {
   isArtist: boolean;
   isTrack: boolean;
+  term: string;
 }
 
-const initialState: ButtonState = { isArtist: true, isTrack: false };
+const initialState: ButtonState = { isArtist: true, isTrack: false, term: 'short_term' };
 
 const buttonSlice = createSlice({
   name: 'button',
@@ -18,6 +19,9 @@ const buttonSlice = createSlice({
     isTrack(state, action) {
       state.isTrack = action.payload;
       state.isArtist = false;
+    },
+    selectTerm(state, action) {
+      state.term = action.payload;
     },
   },
 });
