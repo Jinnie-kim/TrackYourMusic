@@ -5,9 +5,9 @@ import SideInfo from '../components/SideInfo';
 import ItemButtons from '../components/ItemButton';
 import TermButtons from '../components/TermButton';
 import ItemLists from '../components/ItemList';
-import { Homelayout, Contentlayout, Buttonlayout } from '../style/Home.styled';
 import { getTopArtists, getTopTracks } from '../api/topItem';
 import { getUserProfile } from '../api/user';
+import { Homelayout, Contentlayout, Buttonlayout } from '../style/Home.styled';
 
 interface tokenType {
   token: { accessToken: string };

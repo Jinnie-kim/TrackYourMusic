@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import useAuth from '../hooks/useAuth';
-import { Loadinglayout, LoadSpinner } from '../style/Loading.styled';
 import { tokenAction } from '../store/token-slice';
+import { Loadinglayout, LoadSpinner } from '../style/Loading.styled';
 
 const code = new URLSearchParams(window.location.search).get('code');
 

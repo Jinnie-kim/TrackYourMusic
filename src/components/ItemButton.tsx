@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { ItemButtonBox, ItemButton } from '../style/Button.styled';
 import { buttonAction } from '../store/button-slice';
+import { ItemButtonBox, ItemButton } from '../style/Button.styled';
 
 const ItemButtons = () => {
   const [isArtists, setisArtists] = useState(true);
