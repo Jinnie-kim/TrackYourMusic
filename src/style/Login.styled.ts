@@ -27,5 +27,6 @@ export const LoginButton = styled.a`
   :focus {
     background-color: #17ad46;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
   }
 `;
