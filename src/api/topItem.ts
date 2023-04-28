@@ -1,7 +1,7 @@
 const { VITE_BASE_URL } = import.meta.env;
 
 export const getTopArtists = async (token: string, term: string): Promise<TopItems> => {
-  const result = await fetch(`${VITE_BASE_URL}top/artists?limit=5&time_range=${term}`, {
+  const result = await fetch(`${VITE_BASE_URL}/top/artists?limit=5&time_range=${term}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -10,7 +10,7 @@ export const getTopArtists = async (token: string, term: string): Promise<TopIte
 };
 
 export const getTopTracks = async (token: string, term: string): Promise<TopItems> => {
-  const result = await fetch(`${VITE_BASE_URL}top/tracks?limit=5&time_range=${term}`, {
+  const result = await fetch(`${VITE_BASE_URL}/top/tracks?limit=5&time_range=${term}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
