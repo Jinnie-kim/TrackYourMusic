@@ -7,7 +7,7 @@ interface userInfoProp {
 const SideInfo = ({ userInfo }: userInfoProp) => {
   return (
     <SideInfolayout>
-      <img src={userInfo?.images[0].url} alt="user image" />
+      <img src={userInfo?.images[0]?.url} alt="user image" />
       <InfoLists>
         <InfoList>
           <dt>Member id</dt>
