@@ -10,7 +10,7 @@ const useAuth = (code: string) => {
 
   useEffect(() => {
     async function getAccessToken() {
-      const response = await fetch('https://listening-history-server.fly.dev/loading', {
+      const response = await fetch('https://listening-history-server.fly.dev/gettoken', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
