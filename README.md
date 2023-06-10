@@ -2,11 +2,15 @@
 
 Spotify 스트리밍 어플을 사용하여 음악을 듣는 유저들이 1달, 6달, 전체 주기로 그들의 top artist와 top track을 최대 5순위까지 확인해볼 수 있는 서비스 입니다.
 
+## 배포 URL
+
+https://track-your-music.vercel.app/
+
 ## Tech Stack
 
-Front: React, TypeScript
+Front: React, TypeScript, redux-toolkit, emotion(styled-component)
 <br />
-Back: Node.js, Express (<a href="https://github.com/Jinnie-kim/TYM-server">백엔드 코드 보기</a>)
+Back: Node.js, Express (<a href="https://github.com/Jinnie-kim/TYM-server">백엔드 코드 Repository</a>)
 
 ## 최종 구현 화면
 
